@@ -106,7 +106,7 @@ class Coefficients {
 			return coefficient;					
 		}						
 	}							
-	public static enum TrainType {G (1.0f), D (1.4f*1.33f), V (1.0f), M (1.0f), H (1.0f);							
+	public static enum TrainType {G (1.0f), D (1.4f), V (1.0f), M (1.0f), H (1.0f);							
 		private final float coefficient;						
 		TrainType(float coefficient) {						
 			this.coefficient= coefficient;					
