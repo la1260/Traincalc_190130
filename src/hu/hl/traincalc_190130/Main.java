@@ -51,6 +51,24 @@ public class Main implements TrainCalcFrameListener1 {
 		allwagonz.get(Matter.Uzemanyag).put(450,  14);
 		allwagonz.get(Matter.Uzemanyag).put(480, 20);
 		allwagonz.get(Matter.Uzemanyag).put(500,  13);
+		allwagonz.put(Matter.Muanyag, new Wagonz());
+		allwagonz.get(Matter.Muanyag).put(  0,  1);
+		allwagonz.get(Matter.Muanyag).put( 20,  4);
+		allwagonz.get(Matter.Muanyag).put( 40,  1);
+		allwagonz.get(Matter.Muanyag).put( 45, 43);
+		allwagonz.get(Matter.Muanyag).put( 45,  7);
+		allwagonz.get(Matter.Muanyag).put(110,  1);
+		allwagonz.get(Matter.Muanyag).put(130,  4);
+		allwagonz.get(Matter.Muanyag).put(130,  5);
+		allwagonz.get(Matter.Muanyag).put(135, 13);
+		allwagonz.get(Matter.Muanyag).put(275,  1);
+		allwagonz.get(Matter.Muanyag).put(350,  2);
+		allwagonz.get(Matter.Muanyag).put(350, 31);
+		allwagonz.get(Matter.Muanyag).put(400, 25);
+		allwagonz.get(Matter.Muanyag).put(500,  5);
+		allwagonz.get(Matter.Muanyag).put(500,  1);
+		allwagonz.get(Matter.Muanyag).put(500,  1);
+		allwagonz.get(Matter.Muanyag).put(800,  4);		
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);						
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
