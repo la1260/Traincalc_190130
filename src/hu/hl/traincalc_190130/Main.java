@@ -33,26 +33,24 @@ public class Main implements TrainCalcFrameListener1 {
 	}							
 	public Main() {							
 		allwagonz= new TreeMap<Matter, Wagonz>();						
-		allwagonz.put(Matter.Titan, new Wagonz());
-		allwagonz.get(Matter.Titan).put(0,  1);
-		allwagonz.get(Matter.Titan).put(20,  4);
-		allwagonz.get(Matter.Titan).put(40,  1);
-		allwagonz.get(Matter.Titan).put(55,  7);
-		allwagonz.get(Matter.Titan).put(60,  3);
-		allwagonz.get(Matter.Titan).put(70,  3);
-		allwagonz.get(Matter.Titan).put(80,  5);
-		allwagonz.get(Matter.Titan).put(90, 13);
-		allwagonz.get(Matter.Titan).put(110,  4);
-		allwagonz.get(Matter.Titan).put(120,  3);
-		allwagonz.get(Matter.Titan).put(135, 13);
-		allwagonz.get(Matter.Titan).put(300,  8);
-		allwagonz.get(Matter.Titan).put(330,  10);
-		allwagonz.get(Matter.Titan).put(350,  5);
-		allwagonz.get(Matter.Titan).put(500,  15);
-		allwagonz.get(Matter.Titan).put(500,  5);
-		allwagonz.get(Matter.Titan).put(500,  1);
-		allwagonz.get(Matter.Titan).put(600,  4);
-		allwagonz.get(Matter.Titan).put(800,  4);
+		allwagonz.put(Matter.Uzemanyag, new Wagonz());
+		allwagonz.get(Matter.Uzemanyag).put(  0,  6);
+		allwagonz.get(Matter.Uzemanyag).put( 10,  2);
+		allwagonz.get(Matter.Uzemanyag).put( 20,  6);
+		allwagonz.get(Matter.Uzemanyag).put( 40,  6);
+		allwagonz.get(Matter.Uzemanyag).put( 60, 21);
+		allwagonz.get(Matter.Uzemanyag).put( 70,  6);
+		allwagonz.get(Matter.Uzemanyag).put( 75,  5);
+		allwagonz.get(Matter.Uzemanyag).put( 90,  3);
+		allwagonz.get(Matter.Uzemanyag).put(110,  3);
+		allwagonz.get(Matter.Uzemanyag).put(120,  3);
+		allwagonz.get(Matter.Uzemanyag).put(280,  9);
+		allwagonz.get(Matter.Uzemanyag).put(300,  3);
+		allwagonz.get(Matter.Uzemanyag).put(330, 10);
+		allwagonz.get(Matter.Uzemanyag).put(350, 18);
+		allwagonz.get(Matter.Uzemanyag).put(450,  14);
+		allwagonz.get(Matter.Uzemanyag).put(480, 20);
+		allwagonz.get(Matter.Uzemanyag).put(500,  13);
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);						
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
