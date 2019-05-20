@@ -1,7 +1,5 @@
 package hu.hl.traincalc_190130;								
 								
-import static java.lang.Math.ceil;								
-								
 import java.awt.Color;								
 import java.awt.event.ActionEvent;								
 import java.awt.event.ActionListener;								
@@ -131,7 +129,7 @@ class Coefficients {
 	}							
 	/** A megadott százalék egy vagonja által elszállított mennyiség */							
 	public int getPercentSum(int percent) {							
-		return (int) ceil((float) ceil((100+percent)*buildingcoefficient.getCoefficient()*traintype.getCoefficient()*225/100)*landingcoefficient.getCoefficient()+getIrregularPercentDifference(traintype, percent));						
+		return (int) Math.ceil((float) Math.ceil((100+percent)*buildingcoefficient.getCoefficient()*traintype.getCoefficient()*225/100)*landingcoefficient.getCoefficient()+getIrregularPercentDifference(traintype, percent));						
 	}							
 	public TrainType getTrainType() {							
 		return traintype;						
@@ -494,13 +492,13 @@ class HeaderPanel extends JPanel implements ActionListener, ChangeListener, Matt
 		this.listener1= listener1;						
 	}							
 	public void stateChanged(ChangeEvent changeevent) {							
-		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (int) vperiod.getValue());						
+		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (Integer) vperiod.getValue());						
 	}							
 	public void actionPerformed(ActionEvent actionevent) {							
-		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (int) vperiod.getValue());						
+		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (Integer) vperiod.getValue());						
 	}							
 	public void change0() {							
-		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (int) vperiod.getValue());						
+		listener1.change(new Coefficients(vbuilding.getItemAt(vbuilding.getSelectedIndex()), vlanding.getItemAt(vlanding.getSelectedIndex()), vtraintype.getItemAt(vtraintype.getSelectedIndex())), ((Bool) vparallel.getItemAt(vparallel.getSelectedIndex())).getValue(), (Integer) vperiod.getValue());						
 	}							
 	public void change1(int totalwagoncount) {							
 		vtotalreswagon.setText((0<totalwagoncount) ? String.valueOf(totalwagoncount) : "");						
@@ -624,7 +622,7 @@ class MatterPanel extends JPanel implements ChangeListener, HeaderPanelListener1
 		while (imatter.hasNext()) {						
 			Matter matter= imatter.next();					
 			vreswagons.get(matter).setText("");					
-			TrainCouple traincouple= listener1.change(coefficients, parallel, period, matter, (int) vquantities.get(matter).getValue(), (int) vmaxwagons.get(matter).getValue());					
+			TrainCouple traincouple= listener1.change(coefficients, parallel, period, matter, (Integer) vquantities.get(matter).getValue(), (Integer) vmaxwagons.get(matter).getValue());					
 			restraincouples.put(matter, traincouple);					
 			totalwagoncount= (totalwagoncount==-1 || traincouple==null) ? -1 : totalwagoncount+Math.max(traincouple.train1.getWagonz().getTotalCount(), traincouple.trainn.getWagonz().getTotalCount());					
 		}						
