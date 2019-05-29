@@ -33,23 +33,16 @@ public class Main implements TrainCalcFrameListener1 {
 	}							
 	public Main() {							
 		allwagonz= new TreeMap<Matter, Wagonz>();						
-		allwagonz.put(Matter.Szog, new Wagonz());
-		allwagonz.get(Matter.Szog).put(0, 2);
-		allwagonz.get(Matter.Szog).put(20,  1);
-		allwagonz.get(Matter.Szog).put(30,  2);
-		allwagonz.get(Matter.Szog).put(40,  1);
-		allwagonz.get(Matter.Szog).put(50,  1);
-		allwagonz.get(Matter.Szog).put(60,  2);
-		allwagonz.get(Matter.Szog).put(90,  2);
-		allwagonz.get(Matter.Szog).put(110,  2);
-		allwagonz.get(Matter.Szog).put(120,  2);
-		allwagonz.get(Matter.Szog).put(135,  2);
-		allwagonz.get(Matter.Szog).put(200,  1);
-		allwagonz.get(Matter.Szog).put(285,  1);
-		allwagonz.get(Matter.Szog).put(330,  2);
-		allwagonz.get(Matter.Szog).put(420,  2);
-		allwagonz.get(Matter.Szog).put(500,  4);
-		allwagonz.get(Matter.Szog).put(630,  2);		
+		allwagonz.put(Matter.Nanocso, new Wagonz());
+		allwagonz.get(Matter.Nanocso).put( 0,  1);
+		allwagonz.get(Matter.Nanocso).put(10,  9);
+		allwagonz.get(Matter.Nanocso).put(15,  2);
+		allwagonz.get(Matter.Nanocso).put(20,  2);
+		allwagonz.get(Matter.Nanocso).put(30,  10);
+		allwagonz.get(Matter.Nanocso).put(40,  18);
+		allwagonz.get(Matter.Nanocso).put(60,  4);
+		allwagonz.get(Matter.Nanocso).put(80,  2);
+		allwagonz.get(Matter.Nanocso).put(85,  3);		
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);						
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
@@ -58,7 +51,7 @@ public class Main implements TrainCalcFrameListener1 {
 	}							
 }								
 								
-enum Matter {Fa ("Fa"), Szog ("Szög"), Tegla ("Tégla"), Uveg ("Üveg"), Uzemanyag ("Üzemanyag"), Acel ("Acél"), Kavics ("Kavics"), Uran ("Urán"), Cement ("Cement"), Gumi ("Gumi"), Karbon ("Karbon"), Titan ("Titán"), Marvany ("Márvány"), Kabel ("Kábel"), Muanyag ("Műanyag"), Szilicium("Szilicium"), Litium ("Lítium"), Neodimium ("Neodímium"), Volfram ("Volfrám"), Xenon("Xenon"), Bizmut ("Bizmut");								
+enum Matter {Fa ("Fa"), Szog ("Szög"), Tegla ("Tégla"), Uveg ("Üveg"), Uzemanyag ("Üzemanyag"), Acel ("Acél"), Kavics ("Kavics"), Uran ("Urán"), Cement ("Cement"), Gumi ("Gumi"), Karbon ("Karbon"), Titan ("Titán"), Marvany ("Márvány"), Kabel ("Kábel"), Muanyag ("Műanyag"), Szilicium("Szilicium"), Litium ("Lítium"), Nanocso ("Nanocső"), Neodimium ("Neodímium"), Volfram ("Volfrám"), Xenon("Xenon"), Bizmut ("Bizmut");								
 	private String name;							
 	Matter(String name) {							
 		this.name= name;						
@@ -87,7 +80,7 @@ class Coefficients {
 			return coefficient;					
 		}						
 	}							
-	public static enum TrainType {G (1.0f), D (1.4f), V (1.0f), M (1.0f), H (1.0f);							
+	public static enum TrainType {G (1.0f), D (1.4f), V (1.0f), M (1.0f), H (1.2f);							
 		private final float coefficient;						
 		TrainType(float coefficient) {						
 			this.coefficient= coefficient;					
@@ -107,10 +100,12 @@ class Coefficients {
 		irregularpercents.get(TrainType.G).add(125);						
 		irregularpercents.get(TrainType.G).add(285);						
 		irregularpercents.get(TrainType.G).add(300);						
-		irregularpercents.get(TrainType.G).add(340);						
+		irregularpercents.get(TrainType.G).add(340);
+		irregularpercents.put(TrainType.H, new HashSet<Integer>());						
+		irregularpercents.get(TrainType.H).add(85);						
+		irregularpercents.get(TrainType.H).add(100);						
 		irregularpercents.put(TrainType.V, irregularpercents.get(TrainType.G));						
 		irregularpercents.put(TrainType.M, irregularpercents.get(TrainType.G));						
-		irregularpercents.put(TrainType.H, irregularpercents.get(TrainType.G));						
 	}							
 	private static int getIrregularPercentDifference(TrainType traintype, int percent) {							
 		return (irregularpercents.get(traintype).contains(percent)) ? 1 : 0;						
