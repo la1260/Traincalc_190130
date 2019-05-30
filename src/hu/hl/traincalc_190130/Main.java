@@ -43,7 +43,11 @@ public class Main implements TrainCalcFrameListener1 {
 		allwagonz.get(Matter.Nanocso).put(60,  4);
 		allwagonz.get(Matter.Nanocso).put(80,  2);
 		allwagonz.get(Matter.Nanocso).put(85,  3);		
-		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);						
+		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);
+/*		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
+		System.out.println(c.getPercentSum(85));
+		System.out.println(c.getPercentSum(100));*/
+		
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
 		TrainCouples traincouples= new TrainCouples(allwagonz.get(matter), quantity, coefficients, 1, maxwagoncount, coefficients, 1, maxwagoncount, period, parallel);						
@@ -62,27 +66,27 @@ enum Matter {Fa ("Fa"), Szog ("Szög"), Tegla ("Tégla"), Uveg ("Üveg"), Uzeman
 }								
 								
 class Coefficients {								
-	public static enum BuildingCoefficient {N (1.0f), Y (1.5f);							
-		private final float coefficient;						
-		BuildingCoefficient(float coefficient) {						
+	public static enum BuildingCoefficient {N (0), Y (50);							
+		private final int coefficient;						
+		BuildingCoefficient(int coefficient) {						
 			this.coefficient= coefficient;					
 		}						
 		public float getCoefficient() {						
 			return coefficient;					
 		}						
 	}							
-	public static enum LandingCoefficient {N (1.0f), Y (1.1f);							
-		private final float coefficient;						
-		LandingCoefficient(float coefficient) {						
+	public static enum LandingCoefficient {N (0), Y (10);							
+		private final int coefficient;						
+		LandingCoefficient(int coefficient) {						
 			this.coefficient= coefficient;					
 		}						
 		public float getCoefficient() {						
 			return coefficient;					
 		}						
 	}							
-	public static enum TrainType {G (1.0f), D (1.4f), V (1.0f), M (1.0f), H (1.2f);							
-		private final float coefficient;						
-		TrainType(float coefficient) {						
+	public static enum TrainType {G (0), D (40), V (0), M (0), H (20);							
+		private final int coefficient;						
+		TrainType(int coefficient) {						
 			this.coefficient= coefficient;					
 		}						
 		public float getCoefficient() {						
@@ -102,8 +106,16 @@ class Coefficients {
 		irregularpercents.get(TrainType.G).add(300);						
 		irregularpercents.get(TrainType.G).add(340);
 		irregularpercents.put(TrainType.H, new HashSet<Integer>());						
-		irregularpercents.get(TrainType.H).add(85);						
-		irregularpercents.get(TrainType.H).add(100);						
+//		irregularpercents.get(TrainType.H).add(0);	 //regular					
+//		irregularpercents.get(TrainType.H).add(10);	 //regular					
+//		irregularpercents.get(TrainType.H).add(15);	 //regular					
+//		irregularpercents.get(TrainType.H).add(20);	 //regular					
+//		irregularpercents.get(TrainType.H).add(30);  //regular						
+//		irregularpercents.get(TrainType.H).add(40);	 //regular					
+//		irregularpercents.get(TrainType.H).add(60);	 //regular			
+//		irregularpercents.get(TrainType.H).add(80);	 //regular			
+		irregularpercents.get(TrainType.H).add(85);	 //irregular	
+//		irregularpercents.get(TrainType.H).add(100); //regular			
 		irregularpercents.put(TrainType.V, irregularpercents.get(TrainType.G));						
 		irregularpercents.put(TrainType.M, irregularpercents.get(TrainType.G));						
 	}							
@@ -121,7 +133,7 @@ class Coefficients {
 	}							
 	/** A megadott százalék egy vagonja által elszállított mennyiség */							
 	public int getPercentSum(int percent) {							
-		return (int) Math.ceil((float) Math.ceil((100+percent)*buildingcoefficient.getCoefficient()*traintype.getCoefficient()*225/100)*landingcoefficient.getCoefficient()+getIrregularPercentDifference(traintype, percent));						
+		return (int) Math.ceil((float) Math.ceil((100+percent)*(100+buildingcoefficient.getCoefficient())*(100+traintype.getCoefficient())*225/1000000)*(100+landingcoefficient.getCoefficient())/100+getIrregularPercentDifference(traintype, percent));						
 	}							
 	public TrainType getTrainType() {							
 		return traintype;						
