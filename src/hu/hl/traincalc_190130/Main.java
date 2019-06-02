@@ -30,24 +30,29 @@ public class Main implements TrainCalcFrameListener1 {
 	private TreeMap<Matter, Wagonz> allwagonz;							
 	public static void main(String[] args) {							
 		new Main();						
-	}							
-	public Main() {							
+	}
+	public Main() {
+		Indit2();
+	}
+	public void Indit1() {							
 		allwagonz= new TreeMap<Matter, Wagonz>();						
-		allwagonz.put(Matter.Nanocso, new Wagonz());
-		allwagonz.get(Matter.Nanocso).put( 0,  1);
-		allwagonz.get(Matter.Nanocso).put(10,  9);
-		allwagonz.get(Matter.Nanocso).put(15,  2);
-		allwagonz.get(Matter.Nanocso).put(20,  2);
-		allwagonz.get(Matter.Nanocso).put(30,  10);
-		allwagonz.get(Matter.Nanocso).put(40,  18);
-		allwagonz.get(Matter.Nanocso).put(60,  4);
-		allwagonz.get(Matter.Nanocso).put(80,  2);
-		allwagonz.get(Matter.Nanocso).put(85,  3);		
+		allwagonz.put(Matter.Litium, new Wagonz());
+		allwagonz.get(Matter.Litium).put(  0,  1);
+		allwagonz.get(Matter.Litium).put( 20,  2);
+		allwagonz.get(Matter.Litium).put( 30,  4);
+		allwagonz.get(Matter.Litium).put( 30,  2);
+		allwagonz.get(Matter.Litium).put( 40,  2);
+		allwagonz.get(Matter.Litium).put( 75,  4);
+		allwagonz.get(Matter.Litium).put( 85,  2);		
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);
-/*		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
-		System.out.println(c.getPercentSum(85));
-		System.out.println(c.getPercentSum(100));*/
-		
+	}
+	public void Indit2() {
+		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
+		System.out.println(
+		    +c.getPercentSum(40)*9
+		    +c.getPercentSum(75)*4
+		    +c.getPercentSum(85)*2
+		);
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
 		TrainCouples traincouples= new TrainCouples(allwagonz.get(matter), quantity, coefficients, 1, maxwagoncount, coefficients, 1, maxwagoncount, period, parallel);						
@@ -106,16 +111,20 @@ class Coefficients {
 		irregularpercents.get(TrainType.G).add(300);						
 		irregularpercents.get(TrainType.G).add(340);
 		irregularpercents.put(TrainType.H, new HashSet<Integer>());						
-//		irregularpercents.get(TrainType.H).add(0);	 //regular					
-//		irregularpercents.get(TrainType.H).add(10);	 //regular					
-//		irregularpercents.get(TrainType.H).add(15);	 //regular					
+//		irregularpercents.get(TrainType.H).add(0);	 //regular
+//		irregularpercents.get(TrainType.H).add(10);	 //regular
+//		irregularpercents.get(TrainType.H).add(15);	 //regular
 //		irregularpercents.get(TrainType.H).add(20);	 //regular					
 //		irregularpercents.get(TrainType.H).add(30);  //regular						
+//		irregularpercents.get(TrainType.H).add(35);  //regular						
 //		irregularpercents.get(TrainType.H).add(40);	 //regular					
+//		irregularpercents.get(TrainType.H).add(45);	 //regular					
+//		irregularpercents.get(TrainType.H).add(50);	 //regular					
 //		irregularpercents.get(TrainType.H).add(60);	 //regular			
-//		irregularpercents.get(TrainType.H).add(80);	 //regular			
-		irregularpercents.get(TrainType.H).add(85);	 //irregular	
-//		irregularpercents.get(TrainType.H).add(100); //regular			
+//		irregularpercents.get(TrainType.H).add(75);	 //regular
+//		irregularpercents.get(TrainType.H).add(80);	 //regular
+		irregularpercents.get(TrainType.H).add(85);	 //irregular
+		irregularpercents.get(TrainType.H).add(100); //regular
 		irregularpercents.put(TrainType.V, irregularpercents.get(TrainType.G));						
 		irregularpercents.put(TrainType.M, irregularpercents.get(TrainType.G));						
 	}							
