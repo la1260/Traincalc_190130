@@ -1,4 +1,5 @@
 package hu.hl.traincalc_190130;								
+//git direktori: cd /cygdrive/c/LHorvath/Projects/eclipse/Traincalc_190130
 								
 import java.awt.Color;								
 import java.awt.event.ActionEvent;								
@@ -33,20 +34,18 @@ public class Main implements TrainCalcFrameListener1 {
 	}							
 	public Main() {							
 		allwagonz= new TreeMap<Matter, Wagonz>();						
-		allwagonz.put(Matter.Nanocso, new Wagonz());
-		allwagonz.get(Matter.Nanocso).put( 0,  1);
-		allwagonz.get(Matter.Nanocso).put(10,  9);
-		allwagonz.get(Matter.Nanocso).put(15,  2);
-		allwagonz.get(Matter.Nanocso).put(20,  2);
-		allwagonz.get(Matter.Nanocso).put(30,  10);
-		allwagonz.get(Matter.Nanocso).put(40,  18);
-		allwagonz.get(Matter.Nanocso).put(60,  4);
-		allwagonz.get(Matter.Nanocso).put(80,  2);
-		allwagonz.get(Matter.Nanocso).put(85,  3);		
+		allwagonz.put(Matter.Volfram, new Wagonz());
+		allwagonz.get(Matter.Volfram).put( 0,  4);
+		allwagonz.get(Matter.Volfram).put(30, 14);
+		allwagonz.get(Matter.Volfram).put(40,  3);
+		allwagonz.get(Matter.Volfram).put(45,  4);
+		allwagonz.get(Matter.Volfram).put(50,  10);
+		allwagonz.get(Matter.Volfram).put(60,  6);
+//		allwagonz.get(Matter.Volfram).put(65,  6);
+		allwagonz.get(Matter.Volfram).put(100,  9);		
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);
 /*		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
-		System.out.println(c.getPercentSum(85));
-		System.out.println(c.getPercentSum(100));*/
+		System.out.println(c.getPercentSum(45));*/
 		
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
@@ -99,7 +98,13 @@ class Coefficients {
 		irregularpercents.put(TrainType.D, new HashSet<Integer>());						
 		irregularpercents.get(TrainType.D).add(65);						
 		irregularpercents.get(TrainType.D).add(285);						
-		irregularpercents.get(TrainType.D).add(630);						
+//		irregularpercents.get(TrainType.D).add(400); //regular					
+//		irregularpercents.get(TrainType.D).add(420); //regular					
+//		irregularpercents.get(TrainType.D).add(480); //regular					
+//		irregularpercents.get(TrainType.D).add(500); //regular					
+//		irregularpercents.get(TrainType.D).add(600); //regular					
+		irregularpercents.get(TrainType.D).add(630);
+//		irregularpercents.get(TrainType.D).add(660); //regular		
 		irregularpercents.put(TrainType.G, new HashSet<Integer>());						
 		irregularpercents.get(TrainType.G).add(125);						
 		irregularpercents.get(TrainType.G).add(285);						
