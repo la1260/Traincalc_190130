@@ -33,27 +33,43 @@ public class Main implements TrainCalcFrameListener1 {
 		new Main();						
 	}
 	public Main() {
-		Indit2();
+		Indit1();
 	}
-	public void Indit1() {							
-		allwagonz= new TreeMap<Matter, Wagonz>();						
-		allwagonz.put(Matter.Litium, new Wagonz());
-		allwagonz.get(Matter.Litium).put(  0,  1);
-		allwagonz.get(Matter.Litium).put( 20,  2);
-		allwagonz.get(Matter.Litium).put( 30,  4);
-		allwagonz.get(Matter.Litium).put( 30,  2);
-		allwagonz.get(Matter.Litium).put( 40,  2);
-		allwagonz.get(Matter.Litium).put( 75,  4);
-		allwagonz.get(Matter.Litium).put( 85,  2);		
+	public void Indit1() {
+		allwagonz= new TreeMap<Matter, Wagonz>();
+		allwagonz.put(Matter.Wood, new Wagonz());
+		allwagonz.put(Matter.Wood, new Wagonz());
+		allwagonz.get(Matter.Wood).put(  0,  5);
+		allwagonz.get(Matter.Wood).put( 10,  5);
+		allwagonz.get(Matter.Wood).put( 20, 20);
+		allwagonz.get(Matter.Wood).put( 30,  5);
+		allwagonz.get(Matter.Wood).put( 40,  1);
+		allwagonz.get(Matter.Wood).put( 50,  1);
+		allwagonz.get(Matter.Wood).put( 60,  3);
+		allwagonz.get(Matter.Wood).put( 70, 23);
+		allwagonz.get(Matter.Wood).put( 80,  5);
+		allwagonz.get(Matter.Wood).put(110,  6);
+		allwagonz.get(Matter.Wood).put(120,  3);
+		allwagonz.get(Matter.Wood).put(125,  1);
+		allwagonz.get(Matter.Wood).put(130,  4);
+		allwagonz.get(Matter.Wood).put(135, 13);
+		allwagonz.get(Matter.Wood).put(165,  1);
+		allwagonz.get(Matter.Wood).put(400,  2);
+		allwagonz.get(Matter.Wood).put(450,  7);
+		allwagonz.get(Matter.Wood).put(485, 16);
+		allwagonz.get(Matter.Wood).put(500, 13);
 		new TrainCalcFrame(allwagonz.navigableKeySet()).setListener1(this);
 	}
 	public void Indit2() {
-		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
-		System.out.println(
-		    +c.getPercentSum(40)*9
-		    +c.getPercentSum(75)*4
-		    +c.getPercentSum(85)*2
-		);
+//		Coefficients c= new Coefficients(Coefficients.BuildingCoefficient.Y, Coefficients.LandingCoefficient.Y, Coefficients.TrainType.H);
+		Wagonz w0= new Wagonz();
+		w0.put(45, 1);
+		w0.put(50, 3);
+		w0.put(60, 4);
+/*		System.out.println(
+			+w0.getTotalCount()+"\t"+w0.getTotalSum(c)+"\r"
+			+w0.getTotalSum(c)+" "+c.getTrainType()+" "+w0.getTotalCount()+" "+w0.toString()
+		);*/
 	}							
 	public TrainCouple change(Coefficients coefficients, boolean parallel, int period, Matter matter, int quantity, int maxwagoncount) {							
 		TrainCouples traincouples= new TrainCouples(allwagonz.get(matter), quantity, coefficients, 1, maxwagoncount, coefficients, 1, maxwagoncount, period, parallel);						
@@ -61,7 +77,7 @@ public class Main implements TrainCalcFrameListener1 {
 	}							
 }								
 								
-enum Matter {Fa ("Fa"), Szog ("Szög"), Tegla ("Tégla"), Uveg ("Üveg"), Uzemanyag ("Üzemanyag"), Acel ("Acél"), Kavics ("Kavics"), Uran ("Urán"), Cement ("Cement"), Gumi ("Gumi"), Karbon ("Karbon"), Titan ("Titán"), Marvany ("Márvány"), Kabel ("Kábel"), Muanyag ("Műanyag"), Szilicium("Szilicium"), Litium ("Lítium"), Nanocso ("Nanocső"), Neodimium ("Neodímium"), Volfram ("Volfrám"), Xenon("Xenon"), Bizmut ("Bizmut");								
+enum Matter {Wood ("Fa"), Nails ("Szög"), Bricks ("Tégla"), Glass ("Üveg"), Fuel ("Üzemanyag"),	Steel ("Acél"), Gravel ("Kavics"), U235 ("Urán"), Cement ("Cement"), Rubber ("Gumi"), Carbon ("Karbon"), Titanium ("Titán"), Marble ("Márvány"), Wires ("Kábel"), Plastics ("Műanyag"), Silicon("Szilicium"), Lithium ("Lítium"), Aerogel ("Aerogél"), Nanotubes ("Nanocső"), Neodymium ("Neodímium"), Wolfram ("Volfrám"), Borax ("Bórax"), Xenon ("Xenon"), Bismuth ("Bizmut");
 	private String name;							
 	Matter(String name) {							
 		this.name= name;						
@@ -70,7 +86,301 @@ enum Matter {Fa ("Fa"), Szog ("Szög"), Tegla ("Tégla"), Uveg ("Üveg"), Uzeman
 		return name;						
 	}							
 }								
-								
+
+
+class Values extends TreeMap<Integer, TreeMap<Integer, TreeMap<Integer, TreeMap<Integer, Integer>>>> {
+	private static final long serialVersionUID = 1L;
+	public Values() {
+		add(50,0,0,0,338);
+		add(50,0,0,10,372);
+		add(50,0,0,20,405);
+		add(50,0,0,25,422);
+		add(50,0,0,30,439);
+		add(50,0,0,40,473);
+		add(50,0,0,45,490);
+		add(50,0,0,50,507);
+		add(50,0,0,55,524);
+		add(50,0,0,60,540);
+		add(50,0,0,65,557);
+		add(50,0,0,70,574);
+		add(50,0,0,75,591);
+		add(50,0,0,80,608);
+		add(50,0,0,90,642);
+		add(50,0,0,100,675);
+		add(50,0,0,110,709);
+		add(50,0,0,120,743);
+		add(50,0,0,125,760);
+		add(50,0,0,130,777);
+		add(50,0,0,135,794);
+		add(50,0,0,165,895);
+		add(50,0,0,170,912);
+		add(50,0,0,180,945);
+		add(50,0,0,200,1013);
+		add(50,0,0,240,1148);
+		add(50,0,0,250,1182);
+		add(50,0,0,270,1249);
+		add(50,0,0,275,1266);
+		add(50,0,0,280,1283);
+		add(50,0,0,285,1300);
+		add(50,0,0,300,1350);
+		add(50,0,0,330,1452);
+		add(50,0,0,340,1486);
+		add(50,0,0,350,1519);
+		add(50,0,0,375,1604);
+		add(50,0,0,400,1688);
+		add(50,0,0,420,1755);
+		add(50,0,0,450,1857);
+		add(50,0,0,480,1958);
+		add(50,0,0,485,1975);
+		add(50,0,0,500,2025);
+		add(50,0,0,600,2363);
+		add(50,0,0,630,2464);
+		add(50,0,0,660,2565);
+		add(50,0,0,800,3038);
+		add(50,0,0,1000,3713);
+		add(50,0,20,0,405);
+		add(50,0,20,10,446);
+		add(50,0,20,15,466);
+		add(50,0,20,20,486);
+		add(50,0,20,30,527);
+		add(50,0,20,35,486);
+		add(50,0,20,40,567);
+		add(50,0,20,45,588);
+		add(50,0,20,50,608);
+		add(50,0,20,60,648);
+		add(50,0,20,65,669);
+		add(50,0,20,70,689);
+		add(50,0,20,75,709);
+		add(50,0,20,80,729);
+		add(50,0,20,85,750);
+		add(50,0,20,100,810);
+		add(50,0,20,110,851);
+		add(50,0,20,115,871);
+		add(50,0,20,120,892);
+		add(50,0,40,0,473);
+		add(50,0,40,10,520);
+		add(50,0,40,20,567);
+		add(50,0,40,25,591);
+		add(50,0,40,30,615);
+		add(50,0,40,40,662);
+		add(50,0,40,45,686);
+		add(50,0,40,50,709);
+		add(50,0,40,55,733);
+		add(50,0,40,60,756);
+		add(50,0,40,65,780);
+		add(50,0,40,70,804);
+		add(50,0,40,75,827);
+		add(50,0,40,80,851);
+		add(50,0,40,90,898);
+		add(50,0,40,100,945);
+		add(50,0,40,110,993);
+		add(50,0,40,120,1040);
+		add(50,0,40,130,1087);
+		add(50,0,40,135,1111);
+		add(50,0,40,170,1276);
+		add(50,0,40,180,1323);
+		add(50,0,40,200,1418);
+		add(50,0,40,240,1607);
+		add(50,0,40,250,1654);
+		add(50,0,40,270,1749);
+		add(50,0,40,275,1772);
+		add(50,0,40,280,1796);
+		add(50,0,40,300,1890);
+		add(50,0,40,330,2032);
+		add(50,0,40,340,2079);
+		add(50,0,40,350,2127);
+		add(50,0,40,375,2245);
+		add(50,0,40,400,2363);
+		add(50,0,40,420,2457);
+		add(50,0,40,450,2599);
+		add(50,0,40,480,2741);
+		add(50,0,40,485,2765);
+		add(50,0,40,500,2835);
+		add(50,0,40,600,3308);
+		add(50,0,40,630,3450);
+		add(50,0,40,650,3544);
+		add(50,0,40,660,3591);
+		add(50,0,40,800,4253);
+		add(50,0,40,1000,5198);
+		add(50,10,0,0,372);
+		add(50,10,0,10,410);
+		add(50,10,0,20,446);
+		add(50,10,0,25,465);
+		add(50,10,0,30,483);
+		add(50,10,0,40,521);
+		add(50,10,0,45,539);
+		add(50,10,0,50,558);
+		add(50,10,0,55,577);
+		add(50,10,0,60,594);
+		add(50,10,0,65,613);
+		add(50,10,0,70,632);
+		add(50,10,0,75,651);
+		add(50,10,0,80,669);
+		add(50,10,0,90,707);
+		add(50,10,0,100,743);
+		add(50,10,0,110,780);
+		add(50,10,0,120,818);
+		add(50,10,0,125,837);
+		add(50,10,0,130,855);
+		add(50,10,0,135,874);
+		add(50,10,0,165,985);
+		add(50,10,0,170,1004);
+		add(50,10,0,180,1040);
+		add(50,10,0,200,1115);
+		add(50,10,0,240,1263);
+		add(50,10,0,250,1301);
+		add(50,10,0,270,1374);
+		add(50,10,0,275,1393);
+		add(50,10,0,280,1412);
+		add(50,10,0,285,1431);
+		add(50,10,0,300,1486);
+		add(50,10,0,330,1598);
+		add(50,10,0,340,1635);
+		add(50,10,0,350,1671);
+		add(50,10,0,375,1765);
+		add(50,10,0,400,1857);
+		add(50,10,0,420,1931);
+		add(50,10,0,450,2043);
+		add(50,10,0,480,2154);
+		add(50,10,0,485,2173);
+		add(50,10,0,500,2228);
+		add(50,10,0,600,2600);
+		add(50,10,0,630,2711);
+		add(50,10,0,650,2786);
+		add(50,10,0,660,2822);
+		add(50,10,0,800,3342);
+		add(50,10,0,1000,4085);
+		add(50,10,20,0,446);
+		add(50,10,20,10,491);
+		add(50,10,20,15,513);
+		add(50,10,20,20,535);
+		add(50,10,20,30,580);
+		add(50,10,20,35,602);
+		add(50,10,20,40,624);
+		add(50,10,20,45,647);
+		add(50,10,20,50,669);
+		add(50,10,20,60,713);
+		add(50,10,20,65,736);
+		add(50,10,20,70,758);
+		add(50,10,20,75,780);
+		add(50,10,20,80,802);
+		add(50,10,20,85,826);
+		add(50,10,20,100,892);
+		add(50,10,20,110,937);
+		add(50,10,20,115,959);
+		add(50,10,20,120,982);
+		add(50,10,40,0,521);
+		add(50,10,40,10,572);
+		add(50,10,40,20,624);
+		add(50,10,40,25,651);
+		add(50,10,40,30,677);
+		add(50,10,40,40,729);
+		add(50,10,40,45,755);
+		add(50,10,40,50,780);
+		add(50,10,40,55,807);
+		add(50,10,40,60,832);
+		add(50,10,40,65,859);
+		add(50,10,40,70,885);
+		add(50,10,40,75,910);
+		add(50,10,40,80,937);
+		add(50,10,40,90,988);
+		add(50,10,40,100,1040);
+		add(50,10,40,110,1093);
+		add(50,10,40,120,1144);
+		add(50,10,40,125,1171);
+		add(50,10,40,130,1196);
+		add(50,10,40,135,1223);
+		add(50,10,40,165,1379);
+		add(50,10,40,170,1404);
+		add(50,10,40,180,1456);
+		add(50,10,40,200,1560);
+		add(50,10,40,240,1768);
+		add(50,10,40,250,1820);
+		add(50,10,40,270,1924);
+		add(50,10,40,275,1950);
+		add(50,10,40,280,1976);
+		add(50,10,40,285,2003);
+		add(50,10,40,300,2079);
+		add(50,10,40,330,2236);
+		add(50,10,40,340,2287);
+		add(50,10,40,350,2340);
+		add(50,10,40,375,2470);
+		add(50,10,40,400,2600);
+		add(50,10,40,420,2703);
+		add(50,10,40,450,2859);
+		add(50,10,40,480,3016);
+		add(50,10,40,485,3042);
+		add(50,10,40,500,3119);
+		add(50,10,40,600,3639);
+		add(50,10,40,630,3796);
+		add(50,10,40,650,3899);
+		add(50,10,40,660,3951);
+		add(50,10,40,800,4679);
+		add(50,10,40,1000,5718);		
+	}
+	private void add(int buildingcoefficient, int landingcoefficient, int traintypecoefficient, int percent, int value) {
+		if (!containsKey(buildingcoefficient)) {
+			put(buildingcoefficient, new TreeMap<Integer, TreeMap<Integer, TreeMap<Integer, Integer>>>());
+		}
+		if (!get(buildingcoefficient).containsKey(landingcoefficient)) {
+			get(buildingcoefficient).put(landingcoefficient, new TreeMap<Integer, TreeMap<Integer, Integer>>());
+		}
+		if (!get(buildingcoefficient).get(landingcoefficient).containsKey(traintypecoefficient)) {
+			get(buildingcoefficient).get(landingcoefficient).put(traintypecoefficient, new TreeMap<Integer, Integer>());
+		}
+		get(buildingcoefficient).get(landingcoefficient).get(traintypecoefficient).put(percent, value);		
+	}		
+}
+
+class Coefficients {								
+	public static enum BuildingCoefficient {N (0), Y (50);
+		private int value;
+		private BuildingCoefficient(int value) {
+			this.value= value;
+		}
+		public int getValue() {
+			return value;
+		}
+	}
+	public static enum LandingCoefficient {N (0), Y (10);
+		private int value;
+		private LandingCoefficient(int value) {
+			this.value= value;
+		}
+		public int getValue() {
+			return value;
+		}
+	}					
+	public static enum TrainType {G (0), D (40), V (0), M (0), H (20);
+		private int value;
+		private TrainType(int value) {
+			this.value= value;
+		}
+		public int getValue() {
+			return value;
+		}
+	}
+	private BuildingCoefficient buildingcoefficient;
+	private LandingCoefficient landingcoefficient;
+	private TrainType traintype;
+	private final static Values values= new Values();
+	public Coefficients(BuildingCoefficient buildingcoefficient, LandingCoefficient landingcoefficient, TrainType traintype) {
+		this.buildingcoefficient= buildingcoefficient;
+		this.landingcoefficient= landingcoefficient;
+		this.traintype= traintype;
+	}						
+	public TrainType getTrainType() {							
+		return traintype;						
+	}							
+	public String toString() {							
+		return buildingcoefficient.toString()+"\t"+landingcoefficient.toString()+"\t"+traintype.toString();						
+	}
+	public int getPercentSum(int percent) {
+		return values.get(buildingcoefficient.getValue()).get(landingcoefficient.getValue()).get(traintype.getValue()).get(percent);
+	}
+}			
+
+/*
 class Coefficients {								
 	public static enum BuildingCoefficient {N (0), Y (50);							
 		private final int coefficient;						
@@ -99,7 +409,7 @@ class Coefficients {
 			return coefficient;					
 		}						
 	}							
-	/** Azok a százalékok, amelyek ismeretlen okból, vagononként 1-gyel többet visznek. */							
+	/** Azok a százalékok, amelyek ismeretlen okból, vagononként 1-gyel többet visznek. 							
 	private static HashMap<TrainType, HashSet<Integer>> irregularpercents= new HashMap<TrainType, HashSet<Integer>>();							
 	static {							
 		irregularpercents.put(TrainType.D, new HashSet<Integer>());						
@@ -128,10 +438,12 @@ class Coefficients {
 //		irregularpercents.get(TrainType.H).add(45);	 //regular					
 //		irregularpercents.get(TrainType.H).add(50);	 //regular					
 //		irregularpercents.get(TrainType.H).add(60);	 //regular			
+//		irregularpercents.get(TrainType.H).add(65);	 //regular
 //		irregularpercents.get(TrainType.H).add(75);	 //regular
 //		irregularpercents.get(TrainType.H).add(80);	 //regular
 		irregularpercents.get(TrainType.H).add(85);	 //irregular
-//		irregularpercents.get(TrainType.H).add(100); //regular
+		irregularpercents.get(TrainType.H).add(100); //irregular
+//		irregularpercents.get(TrainType.H).add(115); //regular
 		irregularpercents.put(TrainType.V, irregularpercents.get(TrainType.G));						
 		irregularpercents.put(TrainType.M, irregularpercents.get(TrainType.G));						
 	}							
@@ -147,7 +459,7 @@ class Coefficients {
 		this.landingcoefficient= landingcoefficient;						
 		this.traintype= traintype;						
 	}							
-	/** A megadott százalék egy vagonja által elszállított mennyiség */							
+	/** A megadott százalék egy vagonja által elszállított mennyiség 							
 	public int getPercentSum(int percent) {							
 		return (int) Math.ceil((float) Math.ceil((100+percent)*(100+buildingcoefficient.getCoefficient())*(100+traintype.getCoefficient())*225/1000000)*(100+landingcoefficient.getCoefficient())/100+getIrregularPercentDifference(traintype, percent));						
 	}							
@@ -157,7 +469,8 @@ class Coefficients {
 	public String toString() {							
 		return buildingcoefficient.toString()+"\t"+landingcoefficient.toString()+"\t"+traintype.toString();						
 	}							
-}								
+}	
+*/
 								
 class Wagonz {								
 	private final TreeMap<Integer, Integer> countlist= new TreeMap<Integer, Integer>();							
